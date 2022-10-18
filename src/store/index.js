@@ -1,9 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
 
-// import priceReducer from './calculatorSlice';
+import blogReducer from './slices/blogSlice';
 
 export default configureStore({
-  // reducer: {
-  //   calculator: priceReducer,
-  // },
+  reducer: {
+    blog: blogReducer,
+  },
 });

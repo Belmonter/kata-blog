@@ -1,11 +1,15 @@
 import Header from "./components/Header/Header";
-import ArticlePage from "./pages/ArticlePage/ArticlePage";
+import ArticlesPage from "./pages/ArticlesPage/ArticlesPage";
+import {Routes, Route} from 'react-router-dom'
 
 function App() {
   return (
     <div className="App">
       <Header/>
-      <ArticlePage/>
+      <Routes>
+        <Route path='/' element={<ArticlesPage/>}/>
+        <Route path='/articles' element={<ArticlesPage/>}/>
+      </Routes>
     </div>
   );
 }

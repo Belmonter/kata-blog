@@ -1,0 +1,38 @@
+@use 'sass:math';
+@import '../../assets/scss/base/mixins.scss';
+
+.paginationArticles__wrapper {
+  .ant-pagination.ant-pagination-mini .ant-pagination-prev {
+    margin: 0px 4px 0px 0px;
+    width: 22px;
+    height: 22px;
+  }
+  .ant-pagination.ant-pagination-mini .ant-pagination-next, .ant-pagination.ant-pagination-mini .ant-pagination-prev {
+    margin: 0px 4px 0px 0px;
+    width: 22px;
+    height: 22px;
+  }
+  .ant-pagination.ant-pagination-mini
+  .ant-pagination-next .ant-pagination-item-link, .ant-pagination.ant-pagination-mini
+  .ant-pagination-prev .ant-pagination-item-link {
+    background: transparent;
+    border-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .ant-pagination-item-active {
+    border-radius: 4px;
+    border: unset;
+    background-color: $blue;
+    a {
+      color: $white;
+    }
+  }
+  .ant-pagination-item {
+    a {
+      font-size: rem(12);
+      line-height: math.div(22, 12);
+    }
+  }
+}
