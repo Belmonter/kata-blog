@@ -15,12 +15,15 @@
     align-items: center;
     column-gap: 12px;
   }
-  &__content {
+  &__desc {
     max-width: 682px;
     margin-top: 4px;
     font-size: rem(12);
     line-height: math.div(22, 12);
     color: rgba($mainColor, 0.75);
+  }
+  &__content {
+    margin-top: 25px;
   }
 }
 .info {

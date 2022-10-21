@@ -1,12 +1,13 @@
 import React from 'react';
 import s from './header.module.scss';
+import { Link } from 'react-router-dom';
 
-function Header(props) {
+function Header() {
 	return (
 		<div className={s.header}>
 			<div className="header__container">
 				<div className={s.header__wrapper}>
-					<a href='#' className={s.header__logo}>Realworld Blog</a>
+					<Link to={'/'} className={s.header__logo}>Realworld Blog</Link>
           <div className={s.header__login}>
             <div className={s.signIn}>Sign In</div>
             <div className={s.signUp}>Sign Up</div>

@@ -5,6 +5,7 @@ const initialState = {
 	totalArticles: 150,
 	loading: true,
   currentPage: 1,
+	article: {},
 };
 
 const blog = createSlice({
@@ -22,9 +23,12 @@ const blog = createSlice({
 		},
     setPage(state, action) {
       state.currentPage = action.payload;
-    }
+    },
+		setArticle(state, action) {
+			state.article = action.payload;
+		}
 	},
 });
 
-export const { setArticles, setTotalArticles, setLoader, setPage } = blog.actions;
+export const { setArticles, setTotalArticles, setLoader, setPage, setArticle } = blog.actions;
 export default blog.reducer;

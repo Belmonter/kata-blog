@@ -1,0 +1,8 @@
+@use 'sass:math';
+@import '../../assets/scss/base/mixins.scss';
+
+.articlePage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
