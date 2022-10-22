@@ -9,7 +9,7 @@ function Header() {
 				<div className={s.header__wrapper}>
 					<Link to={'/'} className={s.header__logo}>Realworld Blog</Link>
           <div className={s.header__login}>
-            <div className={s.signIn}>Sign In</div>
+            <Link to={'/sign-in'} className={s.signIn}>Sign In</Link>
             <div className={s.signUp}>Sign Up</div>
           </div>
 				</div>

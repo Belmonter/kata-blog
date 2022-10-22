@@ -1,0 +1,15 @@
+@use 'sass:math';
+@import '../../assets/scss/base/mixins.scss';
+
+.formIn {
+  margin-top: 21px;
+  label {
+    font-family: 'Roboto';
+    display: block;
+    font-size: rem(14);
+    line-height: math.div(22, 14);
+    &:not(:last-child) {
+      margin-bottom: 12px;
+    }
+  }
+}
