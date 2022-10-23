@@ -3,7 +3,7 @@ import s from './Button.module.scss'
 
 function Button({ children, props }) {
 	return (
-		<button className={s.button}>{children}</button>
+		<button type={'submit'} className={s.button}>{children}</button>
 	);
 }
 

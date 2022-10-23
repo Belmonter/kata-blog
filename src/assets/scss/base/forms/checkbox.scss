@@ -29,6 +29,9 @@
     align-items: center;
     position: relative;
     gap: 8px;
+    &.checkError:before {
+      border: 1px solid #F5222D;
+    }
     &:before {
       content: "";
       align-self: flex-start;

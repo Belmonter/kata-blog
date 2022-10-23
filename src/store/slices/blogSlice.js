@@ -4,8 +4,10 @@ const initialState = {
 	articles: [],
 	totalArticles: 150,
 	loading: true,
-  currentPage: 1,
+	currentPage: 1,
 	article: {},
+	user: {},
+	login: false,
 };
 
 const blog = createSlice({
@@ -21,14 +23,18 @@ const blog = createSlice({
 		setLoader(state, action) {
 			state.loading = action.payload;
 		},
-    setPage(state, action) {
-      state.currentPage = action.payload;
-    },
+		setPage(state, action) {
+			state.currentPage = action.payload;
+		},
 		setArticle(state, action) {
 			state.article = action.payload;
-		}
+		},
+		setUser(state, action) {
+			state.user = action.payload;
+			state.login = true;
+		},
 	},
 });
 
-export const { setArticles, setTotalArticles, setLoader, setPage, setArticle } = blog.actions;
+export const { setArticles, setTotalArticles, setLoader, setPage, setArticle, setUser } = blog.actions;
 export default blog.reducer;
