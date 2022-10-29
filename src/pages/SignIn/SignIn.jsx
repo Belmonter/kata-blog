@@ -1,16 +1,19 @@
+import { yupResolver } from '@hookform/resolvers/yup/dist/yup';
 import React, { useState } from 'react';
-import FormSign from '../../components/FormSign/FormSign';
-import s from './SignIn.module.scss';
-import Button from '../../components/Button/Button';
+import { useForm } from 'react-hook-form';
+import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import * as yup from 'yup';
-import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup/dist/yup';
+
 import ApiService from '../../assets/js/apiService';
-import { useDispatch } from 'react-redux';
+import Button from '../../components/Button/Button';
+import FormSign from '../../components/FormSign/FormSign';
+import Input from '../../components/Input/Input';
 import { setUser } from '../../store/slices/blogSlice';
 
-function SignIn(props) {
+import s from './SignIn.module.scss';
+
+function SignIn() {
 	const apiService = new ApiService();
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
@@ -22,20 +25,23 @@ function SignIn(props) {
 		password: yup.string().required(),
 	});
 
-	const { register, handleSubmit, formState: { errors } } = useForm({
+	const {
+		register,
+		handleSubmit,
+		formState: { errors },
+	} = useForm({
 		mode: 'onBlur',
 		resolver: yupResolver(schema),
 	});
 
 	const formSubmit = ({ email, password }) => {
 		const user = { user: { email: email.toLowerCase(), password } };
-		apiService.loginUser(user).then(res => {
-			console.log(res);
+		apiService.loginUser(user).then((res) => {
 			if (res.errors) {
-				setUserError(true)
+				setUserError(true);
 			} else if (res.user) {
-				dispatch(setUser(res.user))
-				navigate('/')
+				dispatch(setUser(res.user));
+				navigate('/');
 			}
 		});
 	};
@@ -44,22 +50,31 @@ function SignIn(props) {
 		<div className={s.formIn}>
 			<div className={s.formIn__title}>Sign In</div>
 			<FormSign onSubmit={handleSubmit(formSubmit)}>
-				<label htmlFor='email'> Email address
-					<input {...register('email')} className={errors.email?.message ? `input error` : 'input'} id={'email'} type='text'
-								 placeholder={'Email' +
-									 ' address'} />
-					<p>{errors.email?.message}</p>
-				</label>
-				<label htmlFor='password'> Password
-					<input {...register('password')} className={errors.password?.message ? `input error` : 'input'} id={'password'} type='password'
-								 placeholder={'Password'} />
-					<p>{errors.password?.message}</p>
-				</label>
+				<Input
+					label={'Email address'}
+					id={'email'}
+					type={'text'}
+					placeholder={'Email address'}
+					register={register}
+					errorMessage={errors.email?.message}
+					classField={errors.email?.message ? `input error` : 'input'}
+				/>
+				<Input
+					label={'Password'}
+					id={'password'}
+					type="password"
+					placeholder={'Password'}
+					register={register}
+					errorMessage={errors.password?.message}
+					classField={errors.password?.message ? `input error` : 'input'}
+				/>
 				<Button>Login</Button>
 				<p>{userError ? 'Incorrect email or password' : null}</p>
 			</FormSign>
 			<div className={s.formIn__signin}>
-				<Link to={'/sign-up'}>Don’t have an account? <span>Sign Up.</span></Link>
+				<Link to={'/sign-up'}>
+					Don’t have an account? <span>Sign Up.</span>
+				</Link>
 			</div>
 		</div>
 	);

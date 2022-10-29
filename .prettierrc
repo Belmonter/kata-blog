@@ -6,6 +6,7 @@
   "BracketLine": true,
   "singleQuote": true,
   "jsxSingleQuote": false,
+  "printWidth": 150,
   "importOrder": [
     "<THIRD_PARTY_MODULES>",
     "^@/components/(.*)$",
@@ -16,9 +17,5 @@
     "(.scss)$"
   ],
   "importOrderSeparation": true,
-  "importOrderParserPlugins": [
-    "jsx",
-    "typescript"
-  ],
-  "printWidth": 150
+  "importOrderSortSpecifiers": true
 }

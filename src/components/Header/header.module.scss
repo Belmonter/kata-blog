@@ -14,6 +14,7 @@
     line-height: math.div(28, 18);
   }
   &__login {
+    cursor: pointer;
     display: flex;
     align-items: center;
     column-gap: 19px;
