@@ -1,17 +1,22 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 
-import avatar from '../../assets/img/avatar.png';
+import { logOut } from '../../store/slices/blogSlice';
 
 import s from './header.module.scss';
 
 function Header() {
+	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const { login, user } = useSelector((state) => state.blog);
 
 	function profileClickHandler() {
 		navigate('/profile');
+	}
+
+	function logOutHandler() {
+		dispatch(logOut(false));
 	}
 
 	return (
@@ -23,14 +28,18 @@ function Header() {
 					</Link>
 					{login ? (
 						<div className={s.header__user}>
-							<div className={s.header__create}>Create article</div>
+							<Link to={'/new-article'} className={s.header__create}>
+								Create article
+							</Link>
 							<div className={s.header__userInfo} onClick={profileClickHandler}>
 								<div className={s.userInfo__name}>{user.username}</div>
 								<div className={s.userInfo__avatar}>
-									<img src={avatar} alt="avatar" />
+									<img src={user.image} alt="avatar" />
 								</div>
 							</div>
-							<div className={s.header__logOut}>Log Out</div>
+							<div className={s.header__logOut} onClick={logOutHandler}>
+								Log Out
+							</div>
 						</div>
 					) : (
 						<div className={s.header__login}>

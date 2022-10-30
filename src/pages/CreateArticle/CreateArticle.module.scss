@@ -1,0 +1,17 @@
+@use 'sass:math';
+@import '../../assets/scss/base/mixins.scss';
+
+.article {
+  &__wrapper {
+    margin: 34px auto 0px auto;
+    max-width: 938px;
+    padding: 32px 48px;
+    background-color: white;
+  }
+  &__title {
+    text-align: center;
+    font-weight: 500;
+    font-size: rem(20);
+    line-height: math.div(28, 20);
+  }
+}

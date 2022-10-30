@@ -3,18 +3,32 @@ class ApiService {
 
 	fetchBlog = async (method, type, options, body) => {
 		if (type === 'articles') {
-			const result = await fetch(`${this.url}${type}${options}`, { method: method }).then((res) => res.json());
-			return result;
+			try {
+				return await fetch(`${this.url}${type}${options}`, { method }).then((res) => res.json());
+			} catch (error) {
+				throw new Error(error);
+			}
 		}
 		if (type === 'users' || type === 'users/login') {
-			const headers = { 'Content-Type': 'application/json' };
-			const result = await fetch(`${this.url}${type}`, { method: method, headers, body }).then((res) => res.json());
-			return result;
+			try {
+				const headers = { 'Content-Type': 'application/json' };
+				return await fetch(`${this.url}${type}`, { method, headers, body }).then((res) => res.json());
+			} catch (error) {
+				throw new Error(error);
+			}
 		}
 		if (type === 'user') {
-			const headers = { 'Content-Type': 'application/json' };
-			const result = await fetch(`${this.url}${type}`, { method: method, headers, body }).then((res) => res.json());
-			return result;
+			try {
+				const headers = {
+					'Content-Type': 'application/json',
+					Authorization: `Token ${options}`,
+				};
+				return await fetch(`${this.url}${type}`, { method, headers, body }).then((res) => {
+					return res.json();
+				});
+			} catch (error) {
+				throw new Error(error);
+			}
 		}
 	};
 
@@ -36,8 +50,8 @@ class ApiService {
 		return this.fetchBlog('POST', 'users/login', '', JSON.stringify(user));
 	}
 
-	updateUser(user) {
-		return this.fetchBlog('PUT', 'user', '', JSON.stringify(user));
+	updateUser(user, token) {
+		return this.fetchBlog('PUT', 'user', token, JSON.stringify(user));
 	}
 }
 

@@ -1,11 +1,13 @@
 import React, { useEffect } from 'react';
-import s from './ArticlesPage.module.scss';
+import { useDispatch, useSelector } from 'react-redux';
+
+import spinner from '../../assets/img/gif/spinner.gif';
+import ApiService from '../../assets/js/apiService';
 import Article from '../../components/Article/Article';
 import PaginationArticles from '../../components/Pagination/PaginationArticles';
-import ApiService from '../../assets/js/apiService';
-import { useDispatch, useSelector } from 'react-redux';
 import { setArticles, setLoader, setTotalArticles } from '../../store/slices/blogSlice';
-import spinner from '../../assets/img/gif/spinner.gif';
+
+import s from './ArticlesPage.module.scss';
 
 function ArticlesPage() {
 	const dispatch = useDispatch();
@@ -34,7 +36,7 @@ function ArticlesPage() {
 						{articles.map(({ slug, title, description, tagList, favorited, favoritesCount, author, createdAt }) => {
 							return (
 								<Article
-                  key={slug + title}
+									key={slug + title}
 									slug={slug}
 									title={title}
 									description={description}

@@ -4,7 +4,7 @@ const Input = ({ label, id, type, register, classField, errorMessage, placeholde
 	return (
 		<label htmlFor={id}>
 			{label}
-			<input className={classField} id={id} type={type} placeholder={placeholder} {...register(id)} />
+			<input className={classField} id={id} type={type} placeholder={placeholder} {...(register ? { ...register(id) } : null)} />
 			{commonError && <p>{commonError}</p>}
 			<p>{errorMessage}</p>
 		</label>

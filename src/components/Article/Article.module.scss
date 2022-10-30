@@ -57,6 +57,9 @@
   &__avatar {
     width: 46px;
     height: 46px;
+    img {
+      border-radius: 50%;
+    }
   }
 }
 .head {

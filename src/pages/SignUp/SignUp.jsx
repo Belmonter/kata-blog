@@ -8,8 +8,8 @@ import * as yup from 'yup';
 import ApiService from '../../assets/js/apiService';
 import Button from '../../components/Button/Button';
 import Checkbox from '../../components/Checkbox/Checkbox';
-import FormSign from '../../components/FormSign/FormSign';
 import Input from '../../components/Input/Input';
+import UserForm from '../../components/UserForm/UserForm';
 import { setUser } from '../../store/slices/blogSlice';
 
 import s from './SignUp.module.scss';
@@ -66,7 +66,7 @@ function SignUp() {
 	return (
 		<div className={s.formIn}>
 			<div className={s.formIn__title}>Create new account</div>
-			<FormSign onSubmit={handleSubmit(submitForm)}>
+			<UserForm onSubmit={handleSubmit(submitForm)}>
 				<Input
 					id={'name'}
 					placeholder={'Username'}
@@ -107,7 +107,7 @@ function SignUp() {
 				/>
 				<Checkbox name={'check'} register={register} errors={errors} />
 				<Button>Create</Button>
-			</FormSign>
+			</UserForm>
 			<div className={s.formIn__signin}>
 				<Link to={'/sign-in'}>
 					Already have an account? <span>Sign In.</span>

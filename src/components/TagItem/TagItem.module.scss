@@ -1,0 +1,32 @@
+@use 'sass:math';
+@import '../../assets/scss/base/mixins.scss';
+
+.tag {
+  &__item {
+    display: flex;
+    column-gap: 15px;
+    align-items: center;
+  }
+  &__delete {
+    width: 118px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #F5222D;
+    border-radius: 4px;
+    line-height: math.div(24, 16);
+    color: #F5222D;
+  }
+  &__add {
+    width: 118px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #1890FF;
+    border-radius: 4px;
+    line-height: math.div(24, 16);
+    color: #1890FF;
+  }
+}

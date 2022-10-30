@@ -1,8 +1,8 @@
 import React from 'react';
 
-import s from './FormSign.module.scss';
+import s from './UserForm.module.scss';
 
-function FormSign({ children, onSubmit }) {
+function UserForm({ children, onSubmit }) {
 	return (
 		<form onSubmit={onSubmit} className={s.formIn}>
 			{children}
@@ -10,4 +10,4 @@ function FormSign({ children, onSubmit }) {
 	);
 }
 
-export default FormSign;
+export default UserForm;

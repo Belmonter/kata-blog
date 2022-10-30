@@ -7,8 +7,8 @@ import * as yup from 'yup';
 
 import ApiService from '../../assets/js/apiService';
 import Button from '../../components/Button/Button';
-import FormSign from '../../components/FormSign/FormSign';
 import Input from '../../components/Input/Input';
+import UserForm from '../../components/UserForm/UserForm';
 import { setUser } from '../../store/slices/blogSlice';
 
 import s from './SignIn.module.scss';
@@ -49,7 +49,7 @@ function SignIn() {
 	return (
 		<div className={s.formIn}>
 			<div className={s.formIn__title}>Sign In</div>
-			<FormSign onSubmit={handleSubmit(formSubmit)}>
+			<UserForm onSubmit={handleSubmit(formSubmit)}>
 				<Input
 					label={'Email address'}
 					id={'email'}
@@ -70,7 +70,7 @@ function SignIn() {
 				/>
 				<Button>Login</Button>
 				<p>{userError ? 'Incorrect email or password' : null}</p>
-			</FormSign>
+			</UserForm>
 			<div className={s.formIn__signin}>
 				<Link to={'/sign-up'}>
 					Don’t have an account? <span>Sign Up.</span>

@@ -33,8 +33,11 @@ const blog = createSlice({
 			state.user = action.payload;
 			state.login = true;
 		},
+		logOut(state) {
+			state.login = false;
+		},
 	},
 });
 
-export const { setArticles, setTotalArticles, setLoader, setPage, setArticle, setUser } = blog.actions;
+export const { setArticles, setTotalArticles, setLoader, setPage, setArticle, setUser, logOut } = blog.actions;
 export default blog.reducer;
