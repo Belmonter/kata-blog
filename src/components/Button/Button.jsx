@@ -1,9 +1,12 @@
 import React from 'react';
-import s from './Button.module.scss'
 
-function Button({ children, props }) {
+import s from './Button.module.scss';
+
+function Button({ children, small }) {
 	return (
-		<button type={'submit'} className={s.button}>{children}</button>
+		<button type={'submit'} className={small ? `${s.button} small-btn` : s.button}>
+			{children}
+		</button>
 	);
 }
 

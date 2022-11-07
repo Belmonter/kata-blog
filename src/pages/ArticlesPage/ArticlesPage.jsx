@@ -33,10 +33,10 @@ function ArticlesPage() {
 			) : (
 				<div className="articlePage__container">
 					<div className={s.articlePage__wrapper}>
-						{articles.map(({ slug, title, description, tagList, favorited, favoritesCount, author, createdAt }) => {
+						{articles.map(({ slug, title, description, tagList, favorited, favoritesCount, author, createdAt }, i) => {
 							return (
 								<Article
-									key={slug + title}
+									key={i + slug}
 									slug={slug}
 									title={title}
 									description={description}

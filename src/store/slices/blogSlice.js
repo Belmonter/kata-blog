@@ -36,8 +36,19 @@ const blog = createSlice({
 		logOut(state) {
 			state.login = false;
 		},
+		updateArticles(state, action) {
+			if (action.payload) {
+				const { slug, favoritesCount, favorited } = action.payload;
+				state.articles.forEach((article) => {
+					if (article.slug === slug) {
+						article.favoritesCount = favoritesCount;
+						article.favorited = favorited;
+					}
+				});
+			}
+		},
 	},
 });
 
-export const { setArticles, setTotalArticles, setLoader, setPage, setArticle, setUser, logOut } = blog.actions;
+export const { setArticles, setTotalArticles, setLoader, setPage, setArticle, setUser, logOut, updateArticles } = blog.actions;
 export default blog.reducer;

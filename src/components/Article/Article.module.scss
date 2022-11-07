@@ -16,14 +16,50 @@
     column-gap: 12px;
   }
   &__desc {
-    max-width: 682px;
     margin-top: 4px;
-    font-size: rem(12);
-    line-height: math.div(22, 12);
-    color: rgba($mainColor, 0.75);
+    display: flex;
+    justify-content: space-between;
+    p {
+      margin-bottom: 0 !important;
+      flex: 1 1 auto;
+      font-size: rem(12);
+      line-height: math.div(22, 12);
+      color: rgba($mainColor, 0.75);
+    }
   }
   &__content {
     margin-top: 25px;
+  }
+  &__btns {
+    display: flex;
+    column-gap: 12px;
+    align-self: flex-end;
+  }
+  &__del {
+    cursor: pointer;
+    width: 78px;
+    height: 31px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #F5222D;
+    border-radius: 5px;
+    font-size: rem(14);
+    line-height: math.div(22, 14);
+    color: #F5222D;
+  }
+  &__edit {
+    cursor: pointer;
+    width: 78px;
+    height: 31px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #52C41A;
+    border-radius: 5px;
+    font-size: rem(14);
+    line-height: math.div(22, 14);
+    color: #52C41A;
   }
 }
 .info {
@@ -70,6 +106,7 @@
     color: $blue;
   }
   &__likes {
+    cursor: pointer;
     display: flex;
     align-items: center;
     column-gap: 5px;
@@ -80,4 +117,7 @@
     align-items: center;
     column-gap: 8px;
   }
+}
+.like {
+
 }

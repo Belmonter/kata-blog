@@ -10,12 +10,12 @@ import s from './ArticlePage.module.scss';
 
 function ArticlePage() {
 	const apiService = new ApiService();
-	const { articleSlug } = useParams();
+	const { slug } = useParams();
 	const dispatch = useDispatch();
 	const { article } = useSelector((state) => state.blog);
 
 	useEffect(() => {
-		apiService.getArticle(articleSlug).then((res) => dispatch(setArticle(res.article)));
+		apiService.getArticle(slug).then((res) => dispatch(setArticle(res.article)));
 	}, []);
 
 	return (

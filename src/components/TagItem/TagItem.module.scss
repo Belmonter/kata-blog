@@ -8,6 +8,7 @@
     align-items: center;
   }
   &__delete {
+    cursor: pointer;
     width: 118px;
     height: 40px;
     display: flex;
@@ -15,10 +16,12 @@
     justify-content: center;
     border: 1px solid #F5222D;
     border-radius: 4px;
+    font-family: 'Roboto';
     line-height: math.div(24, 16);
     color: #F5222D;
   }
   &__add {
+    cursor: pointer;
     width: 118px;
     height: 40px;
     display: flex;
@@ -26,7 +29,11 @@
     justify-content: center;
     border: 1px solid #1890FF;
     border-radius: 4px;
+    font-family: 'Roboto';
     line-height: math.div(24, 16);
     color: #1890FF;
+  }
+  &__input {
+    width: 300px !important;
   }
 }

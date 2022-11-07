@@ -20,6 +20,7 @@
   height: 100vh;
 }
 .input {
+  font-family: 'Roboto' !important;
   margin-top: 2px;
   padding: 8px 12px;
   width: 100%;
@@ -27,13 +28,24 @@
   background-color: $white;
   border: 1px solid #D9D9D9;
   border-radius: 4px;
+  font-size: rem(16);
   line-height: math.div(24, 16);
   outline: none;
   &::placeholder {
     font-family: 'Roboto';
+    font-size: rem(16);
     color: #BFBFBF;
   }
   &.error {
     border: 1px solid #F5222D;
   }
 }
+.small-btn {
+  width: 319px;
+}
+textarea {
+  &.error {
+    border: 1px solid #F5222D;
+  }
+}
+
