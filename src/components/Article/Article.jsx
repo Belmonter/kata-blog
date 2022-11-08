@@ -54,8 +54,8 @@ function Article({ slug, title, favorited, description, tagList, favoritesCount,
 					</div>
 					<div className={s.head__tags}>
 						{tagList &&
-							tagList.map((tag) => {
-								if (tag && tag.length) return <div className={s.tag}>{tag}</div>;
+							tagList.map((tag, i) => {
+								if (tag && tag.length) return <div key={tag + i} className={s.tag}>{tag}</div>;
 							})}
 					</div>
 				</div>
