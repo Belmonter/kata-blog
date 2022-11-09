@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
@@ -6,6 +6,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import avatar from '../../assets/img/avatar.png';
 import ApiService from '../../assets/js/apiService';
 import { updateArticles } from '../../store/slices/blogSlice';
+import DeletePopup from '../DeletePopup/DeletePopup';
 
 import s from './Article.module.scss';
 
@@ -19,12 +20,20 @@ function Article({ slug, title, favorited, description, tagList, favoritesCount,
 	const apiService = new ApiService();
 	const dispatch = useDispatch();
 
+	const [popup, setPopup] = useState(false);
+
 	function onEditClick() {
 		navigate(`/articles/${slug}/edit`, { state: { title, description, body, tagList } });
 	}
 
-	function onDeleteClick() {
-		apiService.deleteArticle(user.token, slug).then(() => navigate('/'));
+	function onDeleteClick(e) {
+		setPopup(true);
+	}
+
+	function onNoClick(e) {
+		e.preventDefault();
+		setPopup(false);
+		console.log(popup);
 	}
 
 	function onLike() {
@@ -55,7 +64,12 @@ function Article({ slug, title, favorited, description, tagList, favoritesCount,
 					<div className={s.head__tags}>
 						{tagList &&
 							tagList.map((tag, i) => {
-								if (tag && tag.length) return <div key={tag + i} className={s.tag}>{tag}</div>;
+								if (tag && tag.length)
+									return (
+										<div key={tag + i} className={s.tag}>
+											{tag}
+										</div>
+									);
 							})}
 					</div>
 				</div>
@@ -79,6 +93,7 @@ function Article({ slug, title, favorited, description, tagList, favoritesCount,
 					<div className={s.article__btns}>
 						<div className={s.article__del} onClick={onDeleteClick}>
 							Delete
+							{popup && <DeletePopup slug={slug} onNoClick={onNoClick}/>}
 						</div>
 						<div className={s.article__edit} onClick={onEditClick}>
 							Edit

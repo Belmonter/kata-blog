@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Input = ({ label, id, type, register, classField, errorMessage, placeholder, commonError, value }) => {
+const Input = ({ label, id, type, register, classField, errorMessage, placeholder, commonError }) => {
 	return (
 		<label htmlFor={id}>
 			{label}
@@ -8,7 +8,6 @@ const Input = ({ label, id, type, register, classField, errorMessage, placeholde
 				className={classField}
 				id={id}
 				type={type}
-				value={value ? value : null}
 				placeholder={placeholder}
 				{...(register ? { ...register(id) } : null)}
 			/>

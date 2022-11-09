@@ -36,6 +36,7 @@
     align-self: flex-end;
   }
   &__del {
+    position: relative;
     cursor: pointer;
     width: 78px;
     height: 31px;

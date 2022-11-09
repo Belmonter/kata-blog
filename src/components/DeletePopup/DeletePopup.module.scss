@@ -1,0 +1,69 @@
+@use 'sass:math';
+@import '../../assets/scss/base/mixins.scss';
+
+.popup {
+  position: absolute;
+  width: 246px;
+  top: 0;
+  right: 0;
+  transform: translateX(calc(100% + 8px));
+  padding: 12px 16px;
+  background-color: white;
+  filter: drop-shadow(0px 2px 8px rgba(0, 0, 0, 0.15));
+  &__head {
+    display: flex;
+    column-gap: 8px;
+  }
+  &__icon {
+    width: 16px;
+    height: 16px;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+  &__text {
+    font-size: rem(14);
+    line-height: math.div(22, 14);
+    color: #595959;
+  }
+  &__btns {
+    margin-top: 12px;
+    display: flex;
+    align-items: center;
+    column-gap: 8px;
+  }
+  &__no {
+    cursor: pointer;
+    width: 34px;
+    height: 24px;
+    border: 1px solid #D9D9D9;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: rem(14);
+    line-height: math.div(22, 14);
+    color: #595959;
+  }
+  &__yes {
+    cursor: pointer;
+    width: 34px;
+    height: 24px;
+    border-radius: 4px;
+    background: #1890FF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: rem(14);
+    line-height: math.div(22, 14);
+    color: white;
+  }
+  &__arrow {
+    position: absolute;
+    top: 12px;
+    left: 0;
+    transform: translateX(-100%);
+  }
+}
