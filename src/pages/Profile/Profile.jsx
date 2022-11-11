@@ -23,18 +23,21 @@ const Profile = () => {
 			.string()
 			.nullable()
 			.transform((v, o) => (o === '' ? null : v))
-			.min(3),
+			.min(3)
+			.required(),
 		email: yup
 			.string()
 			.nullable()
 			.transform((v, o) => (o === '' ? null : v))
-			.email(),
+			.email()
+			.required(),
 		password: yup
 			.string()
 			.nullable()
 			.transform((v, o) => (o === '' ? null : v))
 			.min(6)
-			.max(40),
+			.max(40)
+			.required(),
 		image: yup
 			.string()
 			.nullable()

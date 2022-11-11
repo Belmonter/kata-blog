@@ -27,22 +27,22 @@ function Article({ slug, title, favorited, description, tagList, favoritesCount,
 	}
 
 	function onDeleteClick(e) {
+		e.stopPropagation();
 		setPopup(true);
 	}
 
 	function onNoClick(e) {
-		e.preventDefault();
+		e.stopPropagation();
 		setPopup(false);
-		console.log(popup);
 	}
 
 	function onLike() {
 		if (favorited) {
-			apiService.unFavotitesArticle(user.token, slug).then((res) => {
+			apiService.unFavoritesArticle(user.token, slug).then((res) => {
 				dispatch(updateArticles(res.article));
 			});
 		} else {
-			apiService.favotitesArticle(user.token, slug).then((res) => {
+			apiService.favoritesArticle(user.token, slug).then((res) => {
 				dispatch(updateArticles(res.article));
 			});
 		}
@@ -93,7 +93,7 @@ function Article({ slug, title, favorited, description, tagList, favoritesCount,
 					<div className={s.article__btns}>
 						<div className={s.article__del} onClick={onDeleteClick}>
 							Delete
-							{popup && <DeletePopup slug={slug} onNoClick={onNoClick}/>}
+							{popup && <DeletePopup slug={slug} onNoClick={onNoClick} />}
 						</div>
 						<div className={s.article__edit} onClick={onEditClick}>
 							Edit

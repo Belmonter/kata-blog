@@ -121,11 +121,11 @@ class ApiService {
 		return this.fetchBlog('DELETE', 'articles', token, '', slug);
 	}
 
-	favotitesArticle(token, slug) {
+	favoritesArticle(token, slug) {
 		return this.fetchBlog('POST', 'like', token, '', slug);
 	}
 
-	unFavotitesArticle(token, slug) {
+	unFavoritesArticle(token, slug) {
 		return this.fetchBlog('DELETE', 'unLike', token, '', slug);
 	}
 }

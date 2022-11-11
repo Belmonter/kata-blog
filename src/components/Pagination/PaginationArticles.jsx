@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
 import { Pagination } from 'antd';
 import 'antd/dist/antd.min.css';
-import './Pagination.scss';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+
 import ApiService from '../../assets/js/apiService';
-import {setArticles, setLoader, setPage} from '../../store/slices/blogSlice';
+import { setArticles, setLoader, setPage } from '../../store/slices/blogSlice';
+
+import './Pagination.scss';
 
 function PaginationArticles() {
 	const apiService = new ApiService();
@@ -13,7 +15,7 @@ function PaginationArticles() {
 
 	function onPageChange(page) {
 		dispatch(setLoader(true));
-    dispatch(setPage(page))
+		dispatch(setPage(page));
 		apiService.getArticles(5, page * 5 - 5).then((res) => {
 			dispatch(setArticles(res));
 			dispatch(setLoader(false));
@@ -22,7 +24,15 @@ function PaginationArticles() {
 
 	return (
 		<div className="paginationArticles__wrapper">
-			<Pagination size="small" current={currentPage} pageSize={5} total={totalArticles} showSizeChanger={false} responsive={true} onChange={onPageChange} />
+			<Pagination
+				size="small"
+				current={currentPage}
+				pageSize={5}
+				total={totalArticles}
+				showSizeChanger={false}
+				responsive={true}
+				onChange={onPageChange}
+			/>
 		</div>
 	);
 }

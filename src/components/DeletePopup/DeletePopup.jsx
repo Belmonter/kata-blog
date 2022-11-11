@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
@@ -14,7 +14,7 @@ const DeletePopup = ({ slug, onNoClick }) => {
 	const navigate = useNavigate();
 
 	function onYesClick(e) {
-		e.preventDefault();
+		e.stopPropagation();
 		apiService.deleteArticle(user.token, slug).then(() => navigate('/'));
 	}
 

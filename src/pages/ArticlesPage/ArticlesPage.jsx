@@ -28,7 +28,6 @@ function ArticlesPage() {
 			{loading ? (
 				<div className="loader -ibg_contain">
 					<img src={spinner} alt="spinner" />
-					<PaginationArticles />
 				</div>
 			) : (
 				<div className="articlePage__container">
