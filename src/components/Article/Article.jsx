@@ -37,14 +37,16 @@ function Article({ slug, title, favorited, description, tagList, favoritesCount,
 	}
 
 	function onLike() {
-		if (favorited) {
-			apiService.unFavoritesArticle(user.token, slug).then((res) => {
-				dispatch(updateArticles(res.article));
-			});
-		} else {
-			apiService.favoritesArticle(user.token, slug).then((res) => {
-				dispatch(updateArticles(res.article));
-			});
+		if (login) {
+			if (favorited) {
+				apiService.unFavoritesArticle(user.token, slug).then((res) => {
+					dispatch(updateArticles(res.article));
+				});
+			} else {
+				apiService.favoritesArticle(user.token, slug).then((res) => {
+					dispatch(updateArticles(res.article));
+				});
+			}
 		}
 	}
 
