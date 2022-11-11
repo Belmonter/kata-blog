@@ -32,9 +32,11 @@ const blog = createSlice({
 		setUser(state, action) {
 			state.user = action.payload;
 			state.login = true;
+			localStorage.setItem('loginUser', JSON.stringify(action.payload));
 		},
 		logOut(state) {
 			state.login = false;
+			localStorage.removeItem('loginUser');
 		},
 		updateArticles(state, action) {
 			if (action.payload) {

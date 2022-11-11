@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 
-import { logOut } from '../../store/slices/blogSlice';
+import avatar from '../../assets/img/avatar.jpg';
+import { logOut, setUser } from '../../store/slices/blogSlice';
 
 import s from './header.module.scss';
 
@@ -10,6 +11,15 @@ function Header() {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const { login, user } = useSelector((state) => state.blog);
+
+	useEffect(() => {
+		const localUser = localStorage.getItem('loginUser');
+
+		if (localUser) {
+			const user = JSON.parse(localUser);
+			dispatch(setUser(user));
+		}
+	}, []);
 
 	function profileClickHandler() {
 		navigate('/profile');
@@ -34,7 +44,7 @@ function Header() {
 							<div className={s.header__userInfo} onClick={profileClickHandler}>
 								<div className={s.userInfo__name}>{user.username}</div>
 								<div className={s.userInfo__avatar}>
-									<img src={user.image} alt="avatar" />
+									<img src={user.image ? user.image : avatar} alt="avatar" />
 								</div>
 							</div>
 							<div className={s.header__logOut} onClick={logOutHandler}>
